@@ -29,11 +29,11 @@ const handler = (req, res) => {
     return res.status(200).json({ previewLinks: [] });
   }
   const previewLinks = [
-    previewLink,
+    {label: previewLink.label, url: `${process.env.SITE_URL}${previewLink.url}`},
     // we generate the Preview Mode URL:
     {
       label: `${previewLink.label} - Preview`,
-      url: `http://localhost:3000/api/preview?redirect=${previewLink.url}`,
+      url: `${process.env.SITE_URL}/api/preview?redirect=${previewLink.url}`,
     },
   ];
   return res.status(200).json({ previewLinks });
